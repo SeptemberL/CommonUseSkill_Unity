@@ -60,10 +60,12 @@ namespace NodeEditorFramework
 			#endif
 			} }
 
+		private Vector2 mDefaultSize = new Vector2(200, 100);
+
 		/// <summary>
 		/// Specifies the default size of the node when automatic resizing is turned off.
 		/// </summary>
-		public virtual Vector2 DefaultSize { get { return new Vector2(200, 100); } }
+		public virtual Vector2 DefaultSize { get { return mDefaultSize; } set { mDefaultSize = value; } }
 
 		/// <summary>
 		/// Specifies whether the size of this node should be automatically calculated.

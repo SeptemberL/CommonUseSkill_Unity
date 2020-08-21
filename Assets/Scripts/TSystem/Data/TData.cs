@@ -5,15 +5,18 @@ using UnityEngine;
 namespace TSystem
 {
     /// <summary>
-    /// TSystem Êı¾İ»ùÀà
+    /// TSystem ï¿½ï¿½ï¿½İ»ï¿½ï¿½ï¿½
     /// </summary>
     public class TData
     {
         public TData Parent;
 
+        ///æ˜¯å¦æœ‰æ›´æ”¹
+        public bool IsChange;
+
 
         /// <summary>
-        /// ¸´ÖÆº¯Êı
+        /// ï¿½ï¿½ï¿½Æºï¿½ï¿½ï¿½
         /// </summary>
         /// <returns></returns>
         public virtual TData Clone()
