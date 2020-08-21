@@ -14,18 +14,19 @@ namespace NodeEditorFramework.Standard
 
         public const string ID = "TriggerNode";
         public override string GetID { get { return ID; } }
-        public override string Title { get { return actionData.GetDataType().ToString(); } }
+        public override string Title { get { return "触发器";} }
         //public override Vector2 DefaultSize { get { return DefaultSize; }  }
 
         [ConnectionKnob("In", Direction.In, Name, NodeSide.Left, 10)]
         public ConnectionKnob flowIn;
 
-        TActionData actionData = new TActionDefaultData();
+        TriggerData triggerData = new TriggerData();
 
         public override void NodeGUI()
         {
             GUILayout.BeginHorizontal();
             GUILayout.EndHorizontal();
+            /*
             TActionType type = (TActionType)RTEditorGUI.EnumPopup(new GUIContent("命令类型", "命令类型"), actionData.GetDataType());
             if(type != actionData.GetDataType())
             {
@@ -36,7 +37,7 @@ namespace NodeEditorFramework.Standard
             {
                 DefaultSize = new Vector2(300, 500);
             }
-
+*/
             // Get adjacent flow elements
             Node flowSource = flowIn.connected() ? flowIn.connections[0].body : null;
             //List<Node> flowTargets = flowOut.connections.Select((ConnectionKnob input) => input.body).ToList();

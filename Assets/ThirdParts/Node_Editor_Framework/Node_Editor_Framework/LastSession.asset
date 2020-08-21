@@ -1,65 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9908bb36a13dae43ab9b75f86da7f6f, type: 3}
-  m_Name: CurSession
-  m_EditorClassIdentifier: 
-  editorStates:
-  - {fileID: 4872819601139235698}
-  saveName: New Skill
-  savePath: 
-  livesInScene: 0
-  nodes:
-  - {fileID: 5305171069030913300}
-  groups: []
-  rootNode: {fileID: 896926402821492190, guid: 129596cf2f60cf64bb7e3545ebcda522, type: 2}
---- !u!114 &4872819601139235698
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
-  m_Name: MainEditorState
-  m_EditorClassIdentifier: 
-  myCustomStateVariable: 0
-  canvas: {fileID: 0}
-  parentEditor: {fileID: 0}
-  selectedNode: {fileID: 0}
-  panOffset: {x: 0, y: 0}
-  zoom: 1
---- !u!114 &5284727636017249249
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
-  m_Name: Triggers
-  m_EditorClassIdentifier: 
-  body: {fileID: 5305171069030913300}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: Trigger
-  _connections: []
-  side: 2
-  sidePosition: 48.5
-  sideOffset: 0
---- !u!114 &5305171069030913300
+--- !u!114 &-2541486766250953919
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,4 +16,103 @@ MonoBehaviour:
   position: {x: -569, y: -162}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  triggers: {fileID: 5284727636017249249}
+  triggers: {fileID: 6684588158114962385}
+--- !u!114 &-269757005246468702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0c72604f1e67d43b5497fe42b5f9dc, type: 3}
+  m_Name: TACTION_DEFAULT
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  position: {x: -124.75, y: -225.5}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  flowIn: {fileID: 89148756546905897}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9908bb36a13dae43ab9b75f86da7f6f, type: 3}
+  m_Name: LastSession
+  m_EditorClassIdentifier: 
+  editorStates:
+  - {fileID: 7328932883247068321}
+  saveName: New Skill
+  savePath: 
+  livesInScene: 0
+  nodes:
+  - {fileID: -2541486766250953919}
+  - {fileID: -269757005246468702}
+  groups: []
+  rootNode: {fileID: 896926402821492190, guid: 129596cf2f60cf64bb7e3545ebcda522, type: 2}
+--- !u!114 &89148756546905897
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: In
+  m_EditorClassIdentifier: 
+  body: {fileID: -269757005246468702}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: Trigger
+  _connections:
+  - {fileID: 6684588158114962385}
+  side: 4
+  sidePosition: 10
+  sideOffset: 0
+--- !u!114 &6684588158114962385
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: Triggers
+  m_EditorClassIdentifier: 
+  body: {fileID: -2541486766250953919}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Trigger
+  _connections:
+  - {fileID: 89148756546905897}
+  side: 2
+  sidePosition: 48.5
+  sideOffset: 0
+--- !u!114 &7328932883247068321
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
+  m_Name: MainEditorState
+  m_EditorClassIdentifier: 
+  myCustomStateVariable: 0
+  canvas: {fileID: 0}
+  parentEditor: {fileID: 0}
+  selectedNode: {fileID: -269757005246468702}
+  panOffset: {x: 0, y: 0}
+  zoom: 1
