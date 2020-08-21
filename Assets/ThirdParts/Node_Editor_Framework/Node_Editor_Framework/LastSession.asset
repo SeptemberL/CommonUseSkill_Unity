@@ -1,26 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7252151069383881891
+--- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
-  m_Name: Triggers
+  m_Script: {fileID: 11500000, guid: a9908bb36a13dae43ab9b75f86da7f6f, type: 3}
+  m_Name: CurSession
   m_EditorClassIdentifier: 
-  body: {fileID: 6820976871366727439}
-  direction: 2
-  maxConnectionCount: 1
-  styleID: Trigger
-  _connections: []
-  side: 2
-  sidePosition: 0
-  sideOffset: 0
---- !u!114 &-2148226650207427150
+  editorStates:
+  - {fileID: 4872819601139235698}
+  saveName: New Skill
+  savePath: 
+  livesInScene: 0
+  nodes:
+  - {fileID: 5305171069030913300}
+  groups: []
+  rootNode: {fileID: 896926402821492190, guid: 129596cf2f60cf64bb7e3545ebcda522, type: 2}
+--- !u!114 &4872819601139235698
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33,33 +34,32 @@ MonoBehaviour:
   m_Name: MainEditorState
   m_EditorClassIdentifier: 
   myCustomStateVariable: 0
-  canvas: {fileID: 11400000}
+  canvas: {fileID: 0}
   parentEditor: {fileID: 0}
   selectedNode: {fileID: 0}
   panOffset: {x: 0, y: 0}
   zoom: 1
---- !u!114 &11400000
+--- !u!114 &5284727636017249249
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9908bb36a13dae43ab9b75f86da7f6f, type: 3}
-  m_Name: LastSession
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: Triggers
   m_EditorClassIdentifier: 
-  editorStates:
-  - {fileID: -2148226650207427150}
-  saveName: New Skill
-  savePath: 
-  livesInScene: 0
-  nodes:
-  - {fileID: 6820976871366727439}
-  groups: []
-  rootNode: {fileID: 0}
---- !u!114 &6820976871366727439
+  body: {fileID: 5305171069030913300}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Trigger
+  _connections: []
+  side: 2
+  sidePosition: 48.5
+  sideOffset: 0
+--- !u!114 &5305171069030913300
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71,8 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f5b7d5797049641b7ad5674b3dff58, type: 3}
   m_Name: Skill Root Node
   m_EditorClassIdentifier: 
-  canvas: {fileID: 11400000}
-  position: {x: 0, y: 0}
+  canvas: {fileID: 0}
+  position: {x: -569, y: -162}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  triggers: {fileID: -7252151069383881891}
+  triggers: {fileID: 5284727636017249249}

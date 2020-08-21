@@ -1,0 +1,13 @@
+
+.vscode/launch.json
+.vscode/settings.json
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp.csproj
+Library
+Logs
+Temp
+Seneral.NodeEditorFramework.Editor.csproj
+Seneral.NodeEditorFramework.Runtime.csproj
+Seneral.NodeEditorFramework.Standard.csproj
+TSystem.sln
+UnDoPro.csproj
