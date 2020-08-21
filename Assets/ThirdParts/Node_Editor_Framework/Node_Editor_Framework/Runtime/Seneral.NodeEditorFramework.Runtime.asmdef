@@ -1,0 +1,16 @@
+{
+    "name": "Seneral.NodeEditorFramework.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e14621e1f022a1d42a6c45570dd5d934"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
