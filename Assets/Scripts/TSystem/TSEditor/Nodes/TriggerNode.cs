@@ -57,7 +57,7 @@ namespace NodeEditorFramework.Standard
     }
 
     // Flow connection visual style
-    public class CommandTriggerConnection : ConnectionKnobStyle
+    public class TriggerConnection : ConnectionKnobStyle
     {
         public override string Identifier { get { return TriggerNode.Name; } }
         public override Color Color { get { return Color.red; } }
