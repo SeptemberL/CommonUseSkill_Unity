@@ -76,7 +76,7 @@ public class ExtendedRTNodeEditor : MonoBehaviour
 		canvasCache.editorState.canvasRect = new Rect (rect.x, rect.y + editorInterface.toolbarHeight, rect.width, rect.height - editorInterface.toolbarHeight);
 
 		// Access custom state variable whenever you need
-		canvasCache.editorState.myCustomStateVariable = 0;
+		//canvasCache.editorState.myCustomStateVariable = 0;
 
 		try
 		{ // Perform drawing with error-handling

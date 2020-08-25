@@ -28,12 +28,12 @@ namespace TSystem
                     if (declAttrs.Length < 1)
                         continue;
                     TDataAttribute declarationAttr = (TDataAttribute)declAttrs[0];
-                    if (declarationAttr.MatchFieldType(tattr.FieldType))
+                    //if (declarationAttr.MatchFieldType(tattr.FieldType))
                         tattrs.Add(new TDataDeclaration(tattr, declarationAttr));
-                    else
-                        Debug.LogError("Mismatched " + declarationAttr.GetType().Name + " for " + tattr.FieldType.Name + " '" + declarationAttr.Name + "' on " + nodeData.type.Name + "!");
+                    //else
+                    //    Debug.LogError("Mismatched " + declarationAttr.GetType().Name + " for " + tattr.FieldType.Name + " '" + declarationAttr.Name + "' on " + nodeData.type.Name + "!");
                 }
-                variableDeclarations.Add(type, declarations.ToArray());
+                variableDeclarations.Add(type.ToString(), tattrs.ToArray());
             }
         }
 
