@@ -6,6 +6,7 @@ namespace TSystem
 {
     public class SkillData : ContainerData
     {
-        
+        [TDataAttribute("¼¼ÄÜÃû")]
+        public string Name;
     }
 }

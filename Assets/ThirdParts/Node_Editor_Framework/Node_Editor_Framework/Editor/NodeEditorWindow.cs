@@ -95,8 +95,8 @@ DefaultImporter:
 		*/
 			
 		private void OnEnable()
-		{
-			_editor = this;
+        {
+               _editor = this;
 			NormalReInit();
 
 			// Subscribe to events

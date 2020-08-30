@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TACTION_DEFAULT
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
-  position: {x: -224.75, y: -236.5}
+  position: {x: -268.75, y: -308.5}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   flowIn: {fileID: 4582878594859822299}
@@ -37,6 +37,7 @@ MonoBehaviour:
   nodes:
   - {fileID: 896926402821492190}
   - {fileID: -8616454569676428817}
+  - {fileID: 1769727446626846201}
   groups: []
   rootNode: {fileID: 896926402821492190}
 --- !u!114 &896926402821492190
@@ -49,13 +50,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3f5b7d5797049641b7ad5674b3dff58, type: 3}
-  m_Name: Skill Root Node
+  m_Name: 1010
   m_EditorClassIdentifier: 
   canvas: {fileID: 11400000}
   position: {x: -569, y: -162}
   dynamicConnectionPorts: []
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
   triggers: {fileID: 8220127180325191165}
+--- !u!114 &1206146172935124353
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: In
+  m_EditorClassIdentifier: 
+  body: {fileID: 1769727446626846201}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: Trigger
+  _connections:
+  - {fileID: 8220127180325191165}
+  side: 4
+  sidePosition: 10
+  sideOffset: 0
+--- !u!114 &1769727446626846201
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0c72604f1e67d43b5497fe42b5f9dc, type: 3}
+  m_Name: "\u89E6\u53D1\u5668"
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 11400000}
+  position: {x: -269.6, y: -64.40001}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  flowIn: {fileID: 1206146172935124353}
 --- !u!114 &4582878594859822299
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,11 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
   m_Name: MainEditorState
   m_EditorClassIdentifier: 
+  myCustomStateVariable: 0
   canvas: {fileID: 11400000}
   parentEditor: {fileID: 0}
-  selectedNode: {fileID: 896926402821492190}
-  panOffset: {x: 209.6, y: 96.40001}
-  zoom: 0.8
+  selectedNode: {fileID: 0}
+  panOffset: {x: 210.6, y: 95.40001}
+  zoom: 1.1
 --- !u!114 &8220127180325191165
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,6 +152,7 @@ MonoBehaviour:
   styleID: Trigger
   _connections:
   - {fileID: 4582878594859822299}
+  - {fileID: 1206146172935124353}
   side: 2
   sidePosition: 49
   sideOffset: 0

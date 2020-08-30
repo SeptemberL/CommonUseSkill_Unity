@@ -31,7 +31,7 @@ namespace NodeEditorFramework.Standard
             foreach (ConnectionKnob knob in connectionKnobs)
                 knob.DisplayLayout();
 
-            DrawBaseDataValue(typeof(SkillData), SkillData);
+            //DrawBaseDataValue(typeof(SkillData), SkillData);
         }
 
         #region Self Function

@@ -32,7 +32,8 @@ namespace NodeEditorFramework.Standard
 		public ValueConnectionKnob outputLeft;
 		
 #if UNITY_2017_3_OR_NEWER // From this point on, the assembly definition files force Framework core in a separate assembly
-		protected override void DrawNode () 
+		//protected override void DrawNode ()
+		protected internal override void DrawNode()
 #else // Before that (or if the .asmdef are deleted) they will be in the same assembly and thus need internal keyword
 		protected internal override void DrawNode () 
 #endif

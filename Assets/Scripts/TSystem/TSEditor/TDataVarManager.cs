@@ -37,5 +37,17 @@ namespace TSystem
             }
         }
 
+        /// <summary>
+		/// Returns the variableDeclarations for the given node type
+		/// </summary>
+		public static TDataDeclaration[] GetPortDeclarations(string tDataTypeID)
+        {
+            TDataDeclaration[] decls;
+            if (variableDeclarations.TryGetValue(tDataTypeID, out decls))
+                return decls;
+            else
+                throw new ArgumentException("Could not find node port declarations for node type '" + tDataTypeID + "'!");
+        }
+
     }
 }
