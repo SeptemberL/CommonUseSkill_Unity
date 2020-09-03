@@ -33,7 +33,7 @@ namespace TSystem
                     //else
                     //    Debug.LogError("Mismatched " + declarationAttr.GetType().Name + " for " + tattr.FieldType.Name + " '" + declarationAttr.Name + "' on " + nodeData.type.Name + "!");
                 }
-                variableDeclarations.Add(type.ToString(), tattrs.ToArray());
+                variableDeclarations.Add(type.Name, tattrs.ToArray());
             }
         }
 
@@ -47,6 +47,49 @@ namespace TSystem
                 return decls;
             else
                 throw new ArgumentException("Could not find node port declarations for node type '" + tDataTypeID + "'!");
+        }
+
+        //绘制TData内需要绘制的变量
+        public static void DrawTDataVars(TData data)
+        {
+            TDataDeclaration[] decs =  GetPortDeclarations(data.GetType().Name);
+            if(decs != null && decs.Length > 0)
+            {
+                List<TDataDeclaration> decsList = new ListPool<TDataDeclaration>.Get();
+                decsList.AddRange(decs);
+                decsList.Sort((a,b)=>{ return a.tDataAttributeInfo.mIndex - b.tDataAttributeInfo.mIndex;});
+                for(int i = 0; i < decsList.Count; i++)
+                {
+                    TDataDeclaration dec = decs[i];
+                    DrawDataDec(dec, data);       
+                }
+                ListPool<TDataDeclaration>.Release(decsList);
+            }
+            
+        }
+
+        public static void DrawDataDec(TDataDeclaration dec, TData data)
+        {
+            ///绘制int类型
+            if(dec.tDataField.FieldType.Equals(typeof(int)))
+            {
+                int val = (int)dec.tDataField.GetValue(data);
+                val = RTEditorGUI.IntField(dec.tDataAttributeInfo.mName, val);
+                dec.tDataField.SetValue(data, val);
+            }
+            ///绘制string类型
+            else if(dec.tDataField.FieldType.Equals(typeof(string)))
+            {
+                string val = (string)dec.tDataField.GetValue(data);
+                val = RTEditorGUI.TextField(new GUIContent(dec.tDataAttributeInfo.mName), val);
+                dec.tDataField.SetValue(data, val);
+            }      
+            else if(dec.tDataField.FieldType.BaseType.Equals(typeof(System.Enum)))
+            {
+                System.Enum val = (System.Enum)dec.tDataField.GetValue(data);
+                val = RTEditorGUI.EnumPopup(new GUIContent(dec.tDataAttributeInfo.mName), val);
+                dec.tDataField.SetValue(data, val);
+            }  
         }
 
     }

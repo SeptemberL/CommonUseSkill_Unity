@@ -6,6 +6,9 @@ namespace TSystem
 {
     public abstract class TActionData : TData
     {
+        [TDataAttribute("命令描述")]
+        public string TActionDesc;
+
        public abstract TActionType GetDataType();
     }
 }

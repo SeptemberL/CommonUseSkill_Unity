@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace TSystem
 {
-    public class TActionDefaultData : TActionData
+    public class TActionDataDefault : TActionData
     {
+        [TDataAttribute("这是啥")]
+        public int DefaultIndex;
+
        public override TActionType GetDataType()
        {
            return TActionType.TACTION_DEFAULT;
