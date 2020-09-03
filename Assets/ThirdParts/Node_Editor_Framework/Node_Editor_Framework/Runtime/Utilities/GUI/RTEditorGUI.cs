@@ -206,9 +206,9 @@ namespace NodeEditorFramework.Utilities
 		}
 
 
-		public static bool Toggle (bool toggle, string content, params GUILayoutOption[] options)
+		public static bool Toggle (string content, bool toggle,  params GUILayoutOption[] options)
 		{
-			return Toggle (toggle, new GUIContent (content), options);
+			return Toggle (new GUIContent (content), toggle, options);
 		}
 
 		public static bool Toggle (bool toggle, string content, GUIStyle style, params GUILayoutOption[] options)
@@ -216,7 +216,7 @@ namespace NodeEditorFramework.Utilities
 			return Toggle (toggle, new GUIContent (content), style, options);
 		}
 
-		public static bool Toggle (bool toggle, GUIContent content, params GUILayoutOption[] options)
+		public static bool Toggle (GUIContent content, bool toggle, params GUILayoutOption[] options)
 		{
 			#if UNITY_EDITOR 
 			if (!Application.isPlaying || NodeEditorFramework.NodeEditorGUI.isEditorWindow)

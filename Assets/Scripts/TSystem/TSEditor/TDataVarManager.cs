@@ -55,15 +55,15 @@ namespace TSystem
             TDataDeclaration[] decs =  GetPortDeclarations(data.GetType().Name);
             if(decs != null && decs.Length > 0)
             {
-                List<TDataDeclaration> decsList = new ListPool<TDataDeclaration>.Get();
+                List<TDataDeclaration> decsList = ListPool<TDataDeclaration>.Claim();
                 decsList.AddRange(decs);
-                decsList.Sort((a,b)=>{ return a.tDataAttributeInfo.mIndex - b.tDataAttributeInfo.mIndex;});
+                decsList.Sort((a,b)=>{ return b.tDataAttributeInfo.mIndex - a.tDataAttributeInfo.mIndex;});
                 for(int i = 0; i < decsList.Count; i++)
                 {
-                    TDataDeclaration dec = decs[i];
+                    TDataDeclaration dec = decsList[i];
                     DrawDataDec(dec, data);       
                 }
-                ListPool<TDataDeclaration>.Release(decsList);
+                ListPool<TDataDeclaration>.Release(ref decsList);
             }
             
         }
@@ -83,13 +83,21 @@ namespace TSystem
                 string val = (string)dec.tDataField.GetValue(data);
                 val = RTEditorGUI.TextField(new GUIContent(dec.tDataAttributeInfo.mName), val);
                 dec.tDataField.SetValue(data, val);
-            }      
+            }     
+            //绘制枚举类型
             else if(dec.tDataField.FieldType.BaseType.Equals(typeof(System.Enum)))
             {
                 System.Enum val = (System.Enum)dec.tDataField.GetValue(data);
                 val = RTEditorGUI.EnumPopup(new GUIContent(dec.tDataAttributeInfo.mName), val);
                 dec.tDataField.SetValue(data, val);
-            }  
+            }
+            //绘制bool类型
+            else if (dec.tDataField.FieldType.BaseType.Equals(typeof(bool)))
+            {
+                bool val = (bool)dec.tDataField.GetValue(data);
+                val = RTEditorGUI.Toggle(new GUIContent(dec.tDataAttributeInfo.mName), val);
+                dec.tDataField.SetValue(data, val);
+            }
         }
 
     }
