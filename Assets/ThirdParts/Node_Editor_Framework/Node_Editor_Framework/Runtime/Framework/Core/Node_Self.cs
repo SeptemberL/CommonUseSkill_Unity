@@ -8,5 +8,9 @@ namespace NodeEditorFramework
 {
     public abstract partial class Node : ScriptableObject
     {
+        protected const int DefaultWidth = 300;
+        protected const int DefaultHeight = 160;
+        public const int HeightOffset = 20;
+
     }
 }

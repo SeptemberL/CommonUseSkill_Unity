@@ -6,6 +6,7 @@ namespace TSystem
 {
     public class TriggerData : TData
     {
+        [TDataAttribute("ÃüÁîÃèÊö")]
         public List<TEventType> TriggerEventType = new List<TEventType>();
         public List<TActionData> ActionDataList = new List<TActionData>();
         public TConditionData ConditionData;

@@ -38,6 +38,7 @@ namespace NodeEditorFramework.Standard
                 DefaultSize = new Vector2(300, 500);
             }
 */
+            DefaultSize = new Vector2(DefaultWidth, TDataVarManager.DrawTDataVars(triggerData) + DefaultHeight);
             // Get adjacent flow elements
             Node flowSource = flowIn.connected() ? flowIn.connections[0].body : null;
             //List<Node> flowTargets = flowOut.connections.Select((ConnectionKnob input) => input.body).ToList();

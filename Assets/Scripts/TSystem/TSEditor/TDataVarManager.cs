@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using NodeEditorFramework.Utilities;
 using System;
+using System.Collections;
+using NodeEditorFramework;
 
 namespace TSystem
 {
@@ -50,8 +52,9 @@ namespace TSystem
         }
 
         //绘制TData内需要绘制的变量
-        public static void DrawTDataVars(TData data)
+        public static int DrawTDataVars(TData data)
         {
+            int width = 0;
             TDataDeclaration[] decs =  GetPortDeclarations(data.GetType().Name);
             if(decs != null && decs.Length > 0)
             {
@@ -61,43 +64,85 @@ namespace TSystem
                 for(int i = 0; i < decsList.Count; i++)
                 {
                     TDataDeclaration dec = decsList[i];
-                    DrawDataDec(dec, data);       
+                    width += DrawDataDec(dec, data);       
                 }
                 ListPool<TDataDeclaration>.Release(ref decsList);
             }
-            
+            return width;
         }
 
-        public static void DrawDataDec(TDataDeclaration dec, TData data)
+        public static int DrawDataDec(TDataDeclaration dec, TData data)
         {
-            ///绘制int类型
-            if(dec.tDataField.FieldType.Equals(typeof(int)))
+            int result = 0;
+            if(dec.tDataField.FieldType.ToString().Contains("System.Collections.Generic.List"))
             {
-                int val = (int)dec.tDataField.GetValue(data);
-                val = RTEditorGUI.IntField(dec.tDataAttributeInfo.mName, val);
-                dec.tDataField.SetValue(data, val);
+                IList var = (IList)dec.tDataField.GetValue(data);
+                Type[] types = dec.tDataField.FieldType.GetGenericArguments();
+                if(types.Length > 0)
+                {
+                    if(EditorUtil.DrawHeader(dec.tDataAttributeInfo.mName))
+                    {
+                        int num = var.Count;
+                        num = RTEditorGUI.IntField(new GUIContent("数量:"), num);
+                        if (var.Count > num)
+                        {
+                            for (int i = var.Count - 1; i > num - 1; i--)
+                            {
+                                var.RemoveAt(i);
+                            }
+                        }
+                        else
+                        {
+                            for (int i = var.Count; i < num; i++)
+                            {
+                                var.Add(Activator.CreateInstance(types[0]));
+                            }
+                        }
+                        for (int i = 0; i < var.Count; i++)
+                        {
+                            var[i] = DrawVar(var[i], types[0], i.ToString());
+                        }
+                        result += Node.HeightOffset + var.Count * Node.HeightOffset;
+                    }
+                }
+            }
+            else
+            {
+                result += Node.HeightOffset;
+                DrawByType(dec.tDataField, data, dec.tDataAttributeInfo.mName);
+            }
+            return result;
+        }
+
+        static void DrawByType(FieldInfo info, TData data, string name)
+        {
+            object var = info.GetValue(data);
+            var = DrawVar(var, info.FieldType, name);
+            info.SetValue(data, var);
+        }
+
+        static object DrawVar(object var, Type type, string name)
+        {
+            if(type == typeof(int))
+            {
+                var = RTEditorGUI.IntField(new GUIContent(name), (int)var);
+            }
+            else if (type.BaseType.Equals(typeof(System.Enum)))
+            {
+                var = RTEditorGUI.EnumPopup(new GUIContent(name), (System.Enum)var);
             }
             ///绘制string类型
-            else if(dec.tDataField.FieldType.Equals(typeof(string)))
+            else if (type.Equals(typeof(string)))
             {
-                string val = (string)dec.tDataField.GetValue(data);
-                val = RTEditorGUI.TextField(new GUIContent(dec.tDataAttributeInfo.mName), val);
-                dec.tDataField.SetValue(data, val);
-            }     
-            //绘制枚举类型
-            else if(dec.tDataField.FieldType.BaseType.Equals(typeof(System.Enum)))
-            {
-                System.Enum val = (System.Enum)dec.tDataField.GetValue(data);
-                val = RTEditorGUI.EnumPopup(new GUIContent(dec.tDataAttributeInfo.mName), val);
-                dec.tDataField.SetValue(data, val);
+                var = RTEditorGUI.TextField(new GUIContent(name), (string)var);
             }
             //绘制bool类型
-            else if (dec.tDataField.FieldType.BaseType.Equals(typeof(bool)))
+            else if (type.Equals(typeof(bool)))
             {
-                bool val = (bool)dec.tDataField.GetValue(data);
-                val = RTEditorGUI.Toggle(new GUIContent(dec.tDataAttributeInfo.mName), val);
-                dec.tDataField.SetValue(data, val);
+                var = RTEditorGUI.Toggle(new GUIContent(name), (bool)var);
             }
+
+            return var;
         }
 
     }
