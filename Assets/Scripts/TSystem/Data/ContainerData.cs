@@ -6,7 +6,7 @@ namespace TSystem
 {
     public class ContainerData : TData
     {
-        [TDataAttribute("Trigger List")]
+        [TDataAttribute("´¥·¢Æ÷ÁÐ±í", true)]
         public List<TriggerData> Triggers = new List<TriggerData>();
     }
 }

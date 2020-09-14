@@ -12,5 +12,12 @@ namespace NodeEditorFramework
         protected const int DefaultHeight = 160;
         public const int HeightOffset = 20;
 
+        protected internal virtual void OnRemoveConnection(ConnectionPort port, ConnectionPort connection) { }
+
+        protected virtual void FlushData()
+        {
+
+        }
+
     }
 }

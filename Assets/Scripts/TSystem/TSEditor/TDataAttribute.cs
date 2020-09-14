@@ -13,19 +13,26 @@ namespace TSystem
     [AttributeUsage(AttributeTargets.Field)]
     public class TDataAttribute : Attribute
     {
-        public string mName;
-        public int mIndex = 0;
+        public string Name;
+        public int Index = 0;
         public TDataFieldType FieldType;
+        public bool NotDraw = false;
 
         public TDataAttribute(string name)//, TDataFieldType fieldType)
         {
-            mName = name;
+            Name = name;
         }
 
         public TDataAttribute(string name, int index)//, TDataFieldType fieldType)
         {
-            mName = name;
-            mIndex = index;
+            Name = name;
+            Index = index;
+        }
+
+        public TDataAttribute(string name, bool notDraw)//, TDataFieldType fieldType)
+        {
+            Name = name;
+            NotDraw = notDraw;
         }
     }
 }

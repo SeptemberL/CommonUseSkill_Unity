@@ -4,10 +4,12 @@ using System.Linq;
 using UnityEditor;
 using TSystem;
 using NodeEditorFramework.Utilities;
+using System;
 
 namespace NodeEditorFramework.Standard
 {
     [Node(false, "Skill/Trigger Node")]
+    [Serializable]
     public class TriggerNode : Node
     {
         public const string Name = "Trigger";
@@ -20,7 +22,9 @@ namespace NodeEditorFramework.Standard
         [ConnectionKnob("In", Direction.In, Name, NodeSide.Left, 10)]
         public ConnectionKnob flowIn;
 
-        TriggerData triggerData = new TriggerData();
+
+        [SerializeField]
+        public TriggerData triggerData = new TriggerData();
 
         public override void NodeGUI()
         {
@@ -38,8 +42,13 @@ namespace NodeEditorFramework.Standard
                 DefaultSize = new Vector2(300, 500);
             }
 */
-            DefaultSize = new Vector2(DefaultWidth, TDataVarManager.DrawTDataVars(triggerData) + DefaultHeight);
-            // Get adjacent flow elements
+            bool uiChanged = false;
+            DefaultSize = new Vector2(DefaultWidth, TDataVarManager.DrawTDataVars(triggerData, ref uiChanged) + DefaultHeight);
+            if (uiChanged)
+            {
+                Debug.Log("hahaha");
+            }
+                // Get adjacent flow elements
             Node flowSource = flowIn.connected() ? flowIn.connections[0].body : null;
             //List<Node> flowTargets = flowOut.connections.Select((ConnectionKnob input) => input.body).ToList();
 
@@ -58,9 +67,11 @@ namespace NodeEditorFramework.Standard
     }
 
     // Flow connection visual style
-    public class TriggerConnection : ConnectionKnobStyle
+    public class TriggerConnection : ValueConnectionType
     {
         public override string Identifier { get { return TriggerNode.Name; } }
         public override Color Color { get { return Color.red; } }
+
+        public override Type Type { get { return typeof(Trigger); } }
     }
 }

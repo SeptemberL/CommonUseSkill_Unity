@@ -52,7 +52,7 @@ namespace TSystem
         }
 
         //绘制TData内需要绘制的变量
-        public static int DrawTDataVars(TData data)
+        public static int DrawTDataVars(TData data, ref bool changed)
         {
             int width = 0;
             TDataDeclaration[] decs =  GetPortDeclarations(data.GetType().Name);
@@ -60,18 +60,20 @@ namespace TSystem
             {
                 List<TDataDeclaration> decsList = ListPool<TDataDeclaration>.Claim();
                 decsList.AddRange(decs);
-                decsList.Sort((a,b)=>{ return b.tDataAttributeInfo.mIndex - a.tDataAttributeInfo.mIndex;});
+                decsList.Sort((a,b)=>{ return b.tDataAttributeInfo.Index - a.tDataAttributeInfo.Index;});
                 for(int i = 0; i < decsList.Count; i++)
                 {
                     TDataDeclaration dec = decsList[i];
-                    width += DrawDataDec(dec, data);       
+                    if (dec.tDataAttributeInfo.NotDraw)
+                        continue;
+                    width += DrawDataDec(dec, data, ref changed);       
                 }
                 ListPool<TDataDeclaration>.Release(ref decsList);
             }
             return width;
         }
 
-        public static int DrawDataDec(TDataDeclaration dec, TData data)
+        public static int DrawDataDec(TDataDeclaration dec, TData data, ref bool changed)
         {
             int result = 0;
             if(dec.tDataField.FieldType.ToString().Contains("System.Collections.Generic.List"))
@@ -80,7 +82,7 @@ namespace TSystem
                 Type[] types = dec.tDataField.FieldType.GetGenericArguments();
                 if(types.Length > 0)
                 {
-                    if(EditorUtil.DrawHeader(dec.tDataAttributeInfo.mName))
+                    if(EditorUtil.DrawHeader(dec.tDataAttributeInfo.Name))
                     {
                         int num = var.Count;
                         num = RTEditorGUI.IntField(new GUIContent("数量:"), num);
@@ -109,7 +111,11 @@ namespace TSystem
             else
             {
                 result += Node.HeightOffset;
-                DrawByType(dec.tDataField, data, dec.tDataAttributeInfo.mName);
+                DrawByType(dec.tDataField, data, dec.tDataAttributeInfo.Name);
+            }
+            if (GUI.changed)
+            {
+                changed = true;
             }
             return result;
         }
@@ -141,7 +147,7 @@ namespace TSystem
             {
                 var = RTEditorGUI.Toggle(new GUIContent(name), (bool)var);
             }
-
+            
             return var;
         }
 

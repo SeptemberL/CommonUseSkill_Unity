@@ -41,7 +41,7 @@ namespace NodeEditorFramework.Standard
             if(type == TActionType.TACTION_DO_DAMAGE)
             {
                 DefaultSize = new Vector2(300, 500);
-                TDataVarManager.DrawTDataVars(actionData);
+                //TDataVarManager.DrawTDataVars(actionData);
             }
 
             // Get adjacent flow elements
