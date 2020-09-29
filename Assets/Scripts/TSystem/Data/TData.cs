@@ -1,3 +1,5 @@
+using NodeEditorFramework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +16,10 @@ namespace TSystem
         ///是否有更改
         public bool IsChange;
 
+#if UNITY_EDITOR
+        [NonSerialized]
+        public Node ParentNode;
+#endif
 
         /// <summary>
         /// ���ƺ���

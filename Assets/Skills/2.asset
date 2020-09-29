@@ -1,0 +1,469 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8721181796603805272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Input
+  m_EditorClassIdentifier: 
+  body: {fileID: -4674366114927473448}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: Float
+  _connections: []
+  side: 4
+  sidePosition: 28.5
+  sideOffset: 0
+--- !u!114 &-4927340960633897979
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: Flow In
+  m_EditorClassIdentifier: 
+  body: {fileID: 4509670730309842978}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: Flow
+  _connections:
+  - {fileID: 5373540180063131326}
+  side: 4
+  sidePosition: 10
+  sideOffset: 0
+--- !u!114 &-4905454363681248808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Input
+  m_EditorClassIdentifier: 
+  body: {fileID: 4509670730309842978}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: Float
+  _connections: []
+  side: 4
+  sidePosition: 28.5
+  sideOffset: 0
+--- !u!114 &-4864893533984948189
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: Flow Out
+  m_EditorClassIdentifier: 
+  body: {fileID: -4674366114927473448}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Flow
+  _connections: []
+  side: 2
+  sidePosition: 10
+  sideOffset: 0
+--- !u!114 &-4674366114927473448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de03bdfc59265fe45ac36abd01b51a31, type: 3}
+  m_Name: Flow Node
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 11400000}
+  position: {x: 19.722229, y: -197}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  flowIn: {fileID: 3134877114696343394}
+  flowOut: {fileID: -4864893533984948189}
+  inputKnob: {fileID: -8721181796603805272}
+  outputKnob: {fileID: 5213473456147321748}
+--- !u!114 &-3482403143910589680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Output
+  m_EditorClassIdentifier: 
+  body: {fileID: 2002559360872625267}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: System.String
+  _connections:
+  - {fileID: 3134877114696343394}
+  side: 2
+  sidePosition: 67.5
+  sideOffset: 0
+--- !u!114 &-2999599665880797635
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Output
+  m_EditorClassIdentifier: 
+  body: {fileID: 698365326178205974}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Float
+  _connections: []
+  side: 2
+  sidePosition: 47.5
+  sideOffset: 0
+--- !u!114 &-2246361303805865800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4620fa9db0beb41b2d5e2bff1656c9, type: 3}
+  m_Name: Graph Root Node
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 11400000}
+  position: {x: -472, y: -212}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  flowChild1: {fileID: 6360490868237019679}
+  flowChild2: {fileID: -1793178274060862133}
+  flowChild3: {fileID: 7556964637937656723}
+--- !u!114 &-1793178274060862133
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: Child 2
+  m_EditorClassIdentifier: 
+  body: {fileID: -2246361303805865800}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Flow
+  _connections: []
+  side: 2
+  sidePosition: 67.5
+  sideOffset: 0
+--- !u!114 &-748703156297056280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: Flow Out
+  m_EditorClassIdentifier: 
+  body: {fileID: 4509670730309842978}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Flow
+  _connections: []
+  side: 2
+  sidePosition: 10
+  sideOffset: 0
+--- !u!114 &-621378612265628925
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Output
+  m_EditorClassIdentifier: 
+  body: {fileID: 4509670730309842978}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Float
+  _connections: []
+  side: 2
+  sidePosition: 28.5
+  sideOffset: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9396c92b94b064883de5903a0ec1b2, type: 3}
+  m_Name: 2
+  m_EditorClassIdentifier: 
+  editorStates:
+  - {fileID: 3611708343826597887}
+  saveName: 2
+  savePath: Assets\Skills\2.asset
+  livesInScene: 0
+  nodes:
+  - {fileID: -2246361303805865800}
+  - {fileID: 2002559360872625267}
+  - {fileID: 698365326178205974}
+  - {fileID: 4509670730309842978}
+  - {fileID: -4674366114927473448}
+  groups: []
+  rootNode: {fileID: -2246361303805865800}
+--- !u!114 &698365326178205974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 039d2c5c84d9bf0489aecb2b0b669362, type: 3}
+  m_Name: Example Node
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 11400000}
+  position: {x: 168.72223, y: -76}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  inputKnob: {fileID: 5020191351527397550}
+  outputKnob: {fileID: -2999599665880797635}
+--- !u!114 &1708946277060220639
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Output
+  m_EditorClassIdentifier: 
+  body: {fileID: 2002559360872625267}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: System.String
+  _connections: []
+  side: 2
+  sidePosition: 103.5
+  sideOffset: 0
+--- !u!114 &2002559360872625267
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10f04280dcb14a40bbcd4ae5599e365, type: 3}
+  m_Name: Resizing Node
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 11400000}
+  position: {x: -263.27777, y: -42}
+  dynamicConnectionPorts:
+  - {fileID: -3482403143910589680}
+  - {fileID: 5373540180063131326}
+  - {fileID: 1708946277060220639}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  labels:
+  - 
+  - 
+  - 212121
+--- !u!114 &3134877114696343394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: Flow In
+  m_EditorClassIdentifier: 
+  body: {fileID: -4674366114927473448}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: Flow
+  _connections:
+  - {fileID: -3482403143910589680}
+  side: 4
+  sidePosition: 10
+  sideOffset: 0
+--- !u!114 &3611708343826597887
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ab6487237ff124ea4c2aa5de9ce3fb, type: 3}
+  m_Name: MainEditorState
+  m_EditorClassIdentifier: 
+  myCustomStateVariable: 0
+  canvas: {fileID: 0}
+  parentEditor: {fileID: 0}
+  selectedNode: {fileID: 0}
+  panOffset: {x: 0, y: 0}
+  zoom: 1
+--- !u!114 &4509670730309842978
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de03bdfc59265fe45ac36abd01b51a31, type: 3}
+  m_Name: Flow Node
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 11400000}
+  position: {x: 99.72223, y: 69}
+  dynamicConnectionPorts: []
+  backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  flowIn: {fileID: -4927340960633897979}
+  flowOut: {fileID: -748703156297056280}
+  inputKnob: {fileID: -4905454363681248808}
+  outputKnob: {fileID: -621378612265628925}
+--- !u!114 &5020191351527397550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Input
+  m_EditorClassIdentifier: 
+  body: {fileID: 698365326178205974}
+  direction: 1
+  maxConnectionCount: 0
+  styleID: Float
+  _connections: []
+  side: 4
+  sidePosition: 47.5
+  sideOffset: 0
+--- !u!114 &5213473456147321748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Output
+  m_EditorClassIdentifier: 
+  body: {fileID: -4674366114927473448}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Float
+  _connections: []
+  side: 2
+  sidePosition: 28.5
+  sideOffset: 0
+--- !u!114 &5373540180063131326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017e2c7fd038ecb46b317c1e003f31dc, type: 3}
+  m_Name: Output
+  m_EditorClassIdentifier: 
+  body: {fileID: 2002559360872625267}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: System.String
+  _connections:
+  - {fileID: -4927340960633897979}
+  side: 2
+  sidePosition: 85.5
+  sideOffset: 0
+--- !u!114 &6360490868237019679
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: Child 1
+  m_EditorClassIdentifier: 
+  body: {fileID: -2246361303805865800}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Flow
+  _connections: []
+  side: 2
+  sidePosition: 48.5
+  sideOffset: 0
+--- !u!114 &7556964637937656723
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d338988a4691f43b8c0764bd85cf70, type: 3}
+  m_Name: Child 3
+  m_EditorClassIdentifier: 
+  body: {fileID: -2246361303805865800}
+  direction: 2
+  maxConnectionCount: 1
+  styleID: Flow
+  _connections: []
+  side: 2
+  sidePosition: 86.5
+  sideOffset: 0

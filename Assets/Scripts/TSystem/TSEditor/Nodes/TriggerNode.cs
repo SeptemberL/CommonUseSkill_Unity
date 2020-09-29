@@ -23,13 +23,15 @@ namespace NodeEditorFramework.Standard
         public ConnectionKnob flowIn;
 
 
-        [SerializeField]
+        [NonSerialized]
         public TriggerData triggerData = new TriggerData();
 
         public override void NodeGUI()
         {
             GUILayout.BeginHorizontal();
             GUILayout.EndHorizontal();
+            if (triggerData.ParentNode == null)
+                triggerData.ParentNode = this;
             /*
             TActionType type = (TActionType)RTEditorGUI.EnumPopup(new GUIContent("命令类型", "命令类型"), actionData.GetDataType());
             if(type != actionData.GetDataType())
@@ -42,14 +44,20 @@ namespace NodeEditorFramework.Standard
                 DefaultSize = new Vector2(300, 500);
             }
 */
+            Node flowSource = flowIn.connected() ? flowIn.connections[0].body : null;
             bool uiChanged = false;
             DefaultSize = new Vector2(DefaultWidth, TDataVarManager.DrawTDataVars(triggerData, ref uiChanged) + DefaultHeight);
             if (uiChanged)
             {
-                Debug.Log("hahaha");
+                RootSkillNode skillNode = flowSource as RootSkillNode;
+                if(skillNode != null)
+                {
+                   // skillNode.FlushTrigger(this);
+                }
+
             }
                 // Get adjacent flow elements
-            Node flowSource = flowIn.connected() ? flowIn.connections[0].body : null;
+            //Node flowSource = flowIn.connected() ? flowIn.connections[0].body : null;
             //List<Node> flowTargets = flowOut.connections.Select((ConnectionKnob input) => input.body).ToList();
 
             // Display adjacent flow elements

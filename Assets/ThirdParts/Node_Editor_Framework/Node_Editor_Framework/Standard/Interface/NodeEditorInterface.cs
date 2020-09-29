@@ -65,6 +65,8 @@ namespace NodeEditorFramework.Standard
 					menu.AddItem(new GUIContent("Save Canvas As"), false, SaveCanvasAs);
 				}
 				menu.AddSeparator("");
+                menu.AddItem(new GUIContent("Export SkillJson Canvas"), false, SaveJson);
+				menu.AddItem(new GUIContent("Export SkillJson Canvas As"), false, SaveJsonAs);
 #endif
 
 				// Import / Export filled with import/export types
@@ -225,9 +227,44 @@ namespace NodeEditorFramework.Standard
 			if (!string.IsNullOrEmpty(path))
 				canvasCache.SaveNodeCanvas(path);
 		}
+
+
+        private void SaveJson()
+        {
+            string path = canvasCache.nodeCanvas.savePath;
+            if (!string.IsNullOrEmpty(path))
+            {
+                if (path.StartsWith("SCENE/"))
+                    canvasCache.SaveSceneNodeCanvas(path.Substring(6));
+                else
+                    canvasCache.SaveNodeCanvas(path);
+                ShowNotification(new GUIContent("Canvas Saved!"));
+            }
+            else
+                ShowNotification(new GUIContent("No save location found. Use 'Save As'!"));
+        }
+
+        private void SaveJsonAs()
+        {
+            string panelPath = "Assets/";
+            string panelFileName = "Node Canvas";
+            if (canvasCache.nodeCanvas != null && !string.IsNullOrEmpty(canvasCache.nodeCanvas.savePath))
+            {
+                panelPath = canvasCache.nodeCanvas.savePath;
+                string savedFileName = System.IO.Path.GetFileNameWithoutExtension(panelPath);
+                if (!string.IsNullOrEmpty(savedFileName))
+                {
+                    panelPath = panelPath.Substring(0, panelPath.LastIndexOf(savedFileName));
+                    panelFileName = savedFileName;
+                }
+            }
+            string path = UnityEditor.EditorUtility.SaveFilePanelInProject("Save Node Canvas", panelFileName, "asset", "", panelPath);
+            if (!string.IsNullOrEmpty(path))
+                canvasCache.SaveNodeCanvas(path);
+        }
 #endif
 
-		private void LoadSceneCanvasCallback(object canvas)
+        private void LoadSceneCanvasCallback(object canvas)
 		{
 			canvasCache.LoadSceneNodeCanvas((string)canvas);
 			sceneCanvasName = canvasCache.nodeCanvas.name;

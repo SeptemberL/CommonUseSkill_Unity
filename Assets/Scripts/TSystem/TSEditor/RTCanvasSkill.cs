@@ -32,6 +32,8 @@ namespace NodeEditorFramework.Standard
             DebugOutputResults();
         }
 
+
+
         /// <summary>
         /// Debugs the values of all possible output nodes
         /// Could be done more precisely but it atleast shows how to get them

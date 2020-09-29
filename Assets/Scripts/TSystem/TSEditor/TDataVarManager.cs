@@ -82,9 +82,10 @@ namespace TSystem
                 Type[] types = dec.tDataField.FieldType.GetGenericArguments();
                 if(types.Length > 0)
                 {
-                    if(EditorUtil.DrawHeader(dec.tDataAttributeInfo.Name))
+                    int num = var.Count;
+                    string name = StringUtil.Concat(dec.tDataAttributeInfo.Name, ":", var.Count.ToString());
+                    if (EditorUtil.DrawHeader(name))
                     {
-                        int num = var.Count;
                         num = RTEditorGUI.IntField(new GUIContent("数量:"), num);
                         if (var.Count > num)
                         {

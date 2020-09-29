@@ -4,6 +4,7 @@ using System.Reflection;
 using System.CodeDom;
 using System;
 using TSystem;
+using System.Collections.Generic;
 
 namespace NodeEditorFramework.Standard
 {
@@ -23,6 +24,7 @@ namespace NodeEditorFramework.Standard
         private ValueConnectionKnobAttribute triggerCreationAttribute = new ValueConnectionKnobAttribute("Out", Direction.Out, "Trigger", ConnectionCount.Single);
         [SerializeField]
         public SkillData SkillData;
+        public List<TriggerNode> triggerNodes = new List<TriggerNode>();
 
         public override void NodeGUI()
         {
@@ -70,6 +72,21 @@ namespace NodeEditorFramework.Standard
 
         }
 
+        public override bool Calculate() 
+        {
+            for (int i = 0; i < dynamicConnectionPorts.Count; i++)
+            {
+                ConnectionPort port = dynamicConnectionPorts[i];
+                if (port.connected())
+                {
+                    ConnectionPort subPort = port.connections[0];
+                    TriggerNode tn = (TriggerNode)subPort.body;
+                    tn.triggerData = SkillData.Triggers[i];
+                }
+            }
+            return true;
+        }
+
         protected internal override void OnAddConnection(ConnectionPort port, ConnectionPort connection)
         {
             base.OnAddConnection(port, connection);
@@ -85,6 +102,7 @@ namespace NodeEditorFramework.Standard
         protected override void FlushData()
         {
             SkillData.Triggers.Clear();
+            triggerNodes.Clear();
             for (int i =0; i < dynamicConnectionPorts.Count; i++)
             {
                 ConnectionPort port = dynamicConnectionPorts[i];
@@ -93,6 +111,24 @@ namespace NodeEditorFramework.Standard
                     ConnectionPort subPort = port.connections[0];
                     TriggerNode tn = (TriggerNode)subPort.body;
                     SkillData.Triggers.Add(tn.triggerData);
+                }
+            }
+        }
+
+        public void FlushTrigger(TriggerNode node)
+        {
+            for (int i = 0; i < dynamicConnectionPorts.Count; i++)
+            {
+                ConnectionPort port = dynamicConnectionPorts[i];
+                if (port.connected())
+                {
+                    ConnectionPort subPort = port.connections[0];
+                    TriggerNode tn = (TriggerNode)subPort.body;
+                    if (tn == node)
+                    {
+                        SkillData.Triggers[i] = tn.triggerData;
+                        break;
+                    }
                 }
             }
         }
